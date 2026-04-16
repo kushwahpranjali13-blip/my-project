@@ -1,0 +1,232 @@
+% =========================================================
+% PREAMBLE AND SETUP
+% =========================================================
+\documentclass[12pt,a4paper]{report}
+\usepackage{graphicx}
+\graphicspath{{ML/}}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{caption}    % For figure captions
+\usepackage{subcaption} % For subfigures
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\geometry{left=1in, right=1in, top=1in, bottom=1in}
+\setstretch{1.5}
+\titleformat{\chapter}[block]{\normalfont\huge\bfseries}{\thechapter.}{1em}{}
+\begin{document}
+\begin{titlepage}
+\centering
+{\Large \textbf{SHRI G.S. INSTITUTE OF TECHNOLOGY AND SCIENCE, INDORE (M.P.)}}\\[0.3cm]
+A Govt. Aided Autonomous Institute, Affiliated to RGPV, Bhopal \\[2cm]
+{\Huge \textbf{Fake News Detection Using Machine Learning}}\\[0.7cm]
+{\Large Minor Project Report}\\[1cm]
+\textbf{Submitted to Rajiv Gandhi Proudyogiki Vishwavidyalaya, Bhopal}\\
+towards partial fulfillment of the degree of\\
+\textbf{Master of Computer Application (Information Technology)}\\[2cm]
+\begin{flushleft}
+\textbf{Supervised by:}\\
+Ms. Megha Rathore\\
+Assistant Professor, Department of Information Technology
+\end{flushleft}
+\begin{flushright}
+\textbf{Submitted by:}\\
+Ruchika Patel\\
+Muskan Kuwal\\
+Pranjali Kushwah\\[0.3cm]
+MCA II Year (2025–2026)
+\end{flushright}
+\vfill
+\textbf{Department of Information Technology}\\
+Shri G.S. Institute of Technology and Science, Indore (M.P.)\\
+\textbf{Academic Session: 2025–2026}
+\end{titlepage}
+% =========================================================
+% DECLARATION / ACKNOWLEDGEMENT (Your existing content)
+% =========================================================
+% DECLARATION
+\chapter*{DECLARATION}
+\addcontentsline{toc}{chapter}{DECLARATION}
+We, Ruchika Patel, Muskan Kuwal, and Pranjali Kushwah, students of Master of Computer Application (Information Technology), Shri Govindram Seksaria Institute of Technology and Science, Indore, hereby declare that the project titled \textbf{“Fake News Detection Using Machine Learning”} is our own work conducted under the supervision of Ms. Megha Rathore, Assistant Professor, Department of Information Technology, SGSITS, Indore (M.P.).
+
+\vspace{1cm}
+\begin{flushright}
+\textbf{Ruchika Patel}\\
+\textbf{Muskan Kuwal}\\
+\textbf{Pranjali Kushwah}
+\end{flushright}
+
+% ACKNOWLEDGEMENT
+\chapter*{ACKNOWLEDGEMENT}
+\addcontentsline{toc}{chapter}{ACKNOWLEDGEMENT}
+We take this opportunity to express our sincere gratitude to our guide, \textbf{Ms. Megha Rathore}, Assistant Professor, Department of Information Technology, for her valuable guidance, encouragement, and continuous support throughout the development of this project.
+
+\begin{flushright}
+\textbf{Ruchika Patel}\\
+\textbf{Muskan Kuwal}\\
+\textbf{Pranjali Kushwah}
+\end{flushright}
+% =========================================================
+\newpage
+\tableofcontents
+\newpage
+% CHAPTER 1: INTRODUCTION
+% =========================================================
+\chapter{INTRODUCTION}
+\label{chap:introduction}
+\section{Problem Statement}
+The proliferation of fake news poses a significant threat to society, democracy, and public trust. This project addresses the challenge of accurately identifying and classifying fabricated news articles using automated machine learning techniques.
+
+\section{Project Objectives}
+\begin{itemize}
+\item To design and implement a system that can detect and classify fake news using ML algorithms.
+\item To preprocess textual data using NLP techniques and TF-IDF vectorization.
+\item To deploy the model using Flask for real-time predictions.
+\end{itemize}
+
+% =========================================================
+% CHAPTER 2: SYSTEM OVERVIEW / LITERATURE REVIEW
+% =========================================================
+\chapter{SYSTEM OVERVIEW}
+\label{chap:overview}
+\section{System Requirements}
+\textbf{Software:} Python 3.8+, Flask, scikit-learn, pandas, joblib, NLTK
+
+\section{Dataset}
+The dataset named \texttt{fake\_news.csv} contains news articles labeled as \textbf{REAL} or \textbf{FAKE}, sourced from Kaggle.
+
+% =========================================================
+% CHAPTER 3: SYSTEM DESIGN (DIAGRAMS ADDED HERE)
+% =========================================================
+\chapter{SYSTEM DESIGN}
+\label{chap:design}
+
+\section{Methodology}
+The overall methodology involves a standard Machine Learning pipeline tailored for Natural Language Processing (NLP) tasks:
+\begin{enumerate}
+    \item Data Loading and Cleaning
+    \item Text Vectorization using TF-IDF
+    \item Model Training (Logistic Regression)
+    \item Model Saving (joblib)
+    \item Web Deployment (Flask)
+\end{enumerate}
+
+% -----------------------------------------------------------------
+% 3.2 SYSTEM ARCHITECTURE / DATA FLOW DIAGRAM
+% -----------------------------------------------------------------
+\section{System Architecture / Data Flow Diagram}
+\label{sec:system_architecture}
+
+The System Architecture Diagram, shown in Figure \ref{fig:system_arch}, illustrates the complete flow of data from the raw dataset to the final prediction by the end-user. It is divided into two main phases: the **Model Training Phase** and the **Real-time Prediction Phase**. The training phase includes preprocessing and TF-IDF vectorization, culminating in saving the trained model and vectorizer. The prediction phase involves the **Flask Web Application** loading these artifacts and processing user input to deliver the classification result.
+
+3.2 SYSTEM ARCHITECTURE / DATA FLOW DIAGRAM
+% -----------------------------------------------------------------
+\section{System Architecture / Data Flow Diagram}
+\label{sec:system_architecture}
+
+The System Architecture Diagram, shown in Figure \ref{fig:system_arch}, illustrates the complete flow of data from the raw dataset to the final prediction by the end-user. It is divided into two main phases: the **Model Training Phase** and the **Real-time Prediction Phase**. The training phase includes preprocessing and TF-IDF vectorization, culminating in saving the trained model and vectorizer. The prediction phase involves the **Flask Web Application** loading these artifacts and processing user input to deliver the classification result.
+
+% FIGURE ENVIRONMENT FOR SYSTEM ARCHITECTURE
+\begin{figure}[h!]
+    \centering
+    % File name updated to 'architecture.png'
+    \includegraphics[width=0.95\textwidth]{architecture.png} 
+    \caption{System Architecture and Data Flow Diagram}
+    \label{fig:system_arch}
+\end{figure}
+
+% -----------------------------------------------------------------
+% 3.3 USE CASE DIAGRAM
+% -----------------------------------------------------------------
+\section{Use Case Diagram}
+\label{sec:use_case}
+
+The Use Case Diagram, presented in Figure \ref{fig:use_case}, identifies the main **actors** and the key **functions (use cases)** of the system. This diagram clarifies the system boundary and the interactions between the users and the application. The primary actors are the **End User** (who interacts with the prediction interface) and the **System Administrator** (responsible for model maintenance and training).
+
+-----------------------------------------------------------------
+% 3.3 USE CASE DIAGRAM
+% -----------------------------------------------------------------
+\section{Use Case Diagram}
+\label{sec:use_case}
+
+The Use Case Diagram, presented in Figure \ref{fig:use_case}, identifies the main **actors** and the key **functions (use cases)** of the system. This diagram clarifies the system boundary and the interactions between the users and the application. The primary actors are the **End User** (who interacts with the prediction interface) and the **System Administrator** (responsible for model maintenance and training).
+
+% FIGURE ENVIRONMENT FOR USE CASE DIAGRAM
+\begin{figure}[h!]
+    \centering
+    % File name updated to 'usecase.png'
+    \includegraphics[width=0.6\textwidth]{usecase.png} 
+    \caption{Use Case Diagram of the Fake News Detection System}
+    \label{fig:use_case}
+\end{figure}
+% -----------------------------------------------------------------
+% 3.4 ACTIVITY DIAGRAM
+% -----------------------------------------------------------------
+\section{Activity Diagram (Prediction Workflow)}
+\label{sec:activity_diagram}
+3.4 ACTIVITY DIAGRAM
+% -----------------------------------------------------------------
+\section{Activity Diagram (Prediction Workflow)}
+\label{sec:activity_diagram}
+
+The Activity Diagram, illustrated in Figure \ref{fig:activity_diag}, maps the **sequential and conditional steps** that occur when a single news article is submitted for prediction. It details the workflow from the user entering the text, through the back-end logic of data cleaning, TF-IDF transformation, and final classification by the Logistic Regression model, to the display of the final Real/Fake result on the web interface.
+
+\begin{figure}[h!]
+    \centering
+    % File name updated to 'activity.png'
+    \includegraphics[width=0.7\textwidth]{activity.png} 
+    \caption{Activity Diagram detailing the Prediction Workflow}
+    \label{fig:activity_diag}
+\end{figure}
+
+% =========================================================
+% CHAPTER 4: IMPLEMENTATION AND TESTING (Your existing content)
+% =========================================================
+\chapter{IMPLEMENTATION AND TESTING}
+\label{chap:implementation}
+
+\section{Implementation}
+\subsection*{Flask Application:}
+\begin{itemize}
+    \item Loads pre-trained Logistic Regression model and TF-IDF vectorizer.
+    \item Takes input text and predicts whether it is Real or Fake.
+    \item Displays output to the user in real-time.
+\end{itemize}
+
+\section{Results and Accuracy}
+The Logistic Regression model achieved an accuracy of approximately 93\% on the testing dataset.
+
+\section{Output Examples}
+\begin{itemize}
+    \item Input: "The Prime Minister announced a new healthcare plan." Output: Real News
+    \item Input: "Aliens spotted near the White House." Output: Fake News
+\end{itemize}
+
+% =========================================================
+% CHAPTER 5: CONCLUSION (Your existing content)
+% =========================================================
+\chapter{CONCLUSION}
+\label{chap:conclusion}
+This project successfully implements a Fake News Detection System using Machine Learning and NLP techniques. The Logistic Regression model, combined with TF-IDF vectorization, delivers high accuracy and efficiency. The Flask application ensures real-time usability.
+
+\section{Future Enhancements}
+\begin{itemize}
+\item Implement deep learning models such as LSTM or BERT.
+\item Integrate real-time news API for live detection.
+\item Support multilingual datasets.
+\end{itemize}
+
+% =========================================================
+% REFERENCES (Your existing content)
+% =========================================================
+\chapter*{REFERENCES}
+\addcontentsline{toc}{chapter}{REFERENCES}
+\begin{enumerate}
+\item Scikit-learn Documentation – \url{https://scikit-learn.org/}
+\item Flask Documentation – \url{https://flask.palletsprojects.com/}
+\item Kaggle Fake and Real News Dataset
+\end{enumerate}
+
+\end{document}
